@@ -5,31 +5,32 @@ import "./App.css";
 import { connect } from "react-redux"
 
 import {
-  increaseCounter,
-  decreaseCounter
-} from "./redux/Counter/counter.actions"
+  nextQuote
+} from "./redux/Quoter/quoter.actions"
+
+import data from "./data/quotes.json"
 
 function App(props) {
   return (
     <div id = "quote-box" className = "App">
-      <p id = "text">Some quote!</p>
-      <p id = "author">The Author!</p>
+      <p id = "text">{data.quotes[props.count].quote}</p>
+      <p id = "author">{data.quotes[props.count].author}</p>
       <button onClick = {() => props.increaseCounter()}>Next Quote</button>
-      <a id = "tweet-quote" target = "_blank" href = "https://twitter.com/intent/tweet">Tweet it</a>
+      <a id = "tweet-quote" target = "_blank" href = {"https://twitter.com/intent/tweet/?text=".concat(data.quotes[props.count].quote, "%0A%0A-", data.quotes[props.count].author)}>Tweet</a>
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    count: state.counter.count,
+    count: state.index.count,
+    maxlen: state.index.maxlen,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    increaseCounter: () => dispatch(increaseCounter()),
-    decreaseCounter: () => dispatch(decreaseCounter()),
+    increaseCounter: () => dispatch(nextQuote()),
   };
 };
 
