@@ -1,4 +1,12 @@
 .App {
+  margin: auto;
+  margin-top: 30vh;
+  width: fit-content;
+  height: fit-content;
+  padding: 10vh 10vw 10vh 10vw;
   text-align: center;
-  background-color: coral;
+  background-color: rgb(236, 236, 236);
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
+
